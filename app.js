@@ -1,0 +1,52 @@
+// import express
+const express =  require("express");
+const cors = require("cors");
+const expressLayouts = require("express-ejs-layouts");
+const logger = require("morgan");
+const path = require("path");
+const bodyParser = require("body-parser");
+require("dotenv").config();
+const mongoose = require("mongoose");
+
+// create a port
+const PORT = process.env.PORT || 3004;
+
+// create a server
+const app = express();
+
+// get uri string
+const uri = process.env.MONGO_CONNECTION_STRING;
+
+// database setup
+mongoose.connect(uri);
+// store a reference to the default connection
+const db = mongoose.connection;
+
+// Bind connection to error event (to get notification of connection errors)
+db.on("error", console.error.bind(console, "MongoDB connection error:"));
+
+// log all requestsusing the morgan's dev template
+app.use(logger("dev"));
+
+// allow cross origin requests
+app.use(cors({ origin: [/127.0.0.1.*/, /localhost.*/] }));
+
+// parse application/x-www-form-urlencoded
+app.use(bodyParser.urlencoded({ extended: false }));
+// parse application/json
+app.use(bodyParser.json());
+
+// use express.static middleware to make the public folder accessible
+app.use(express.static("public"));
+
+// Set EJS up 
+app.use(expressLayouts);
+app.set("layouts","./layouts/full-width")
+
+// Set default views folder
+app.set("views",path.join(__dirname,"views"));
+// Set view engine as ejs
+app.set("view-engine","ejs");
+
+// start listening
+app.listen(PORT, () => console.log(`Example app listening on port ${PORT}!`));
