@@ -9,7 +9,7 @@ require("dotenv").config();
 const mongoose = require("mongoose");
 
 // create a port
-const PORT = process.env.PORT || 3004;
+const PORT = process.env.PORT || 3003;
 
 // create a server
 const app = express();
@@ -41,12 +41,21 @@ app.use(express.static("public"));
 
 // Set EJS up 
 app.use(expressLayouts);
-app.set("layouts","./layouts/full-width")
+app.set("layout","./layouts/full-width")
 
 // Set default views folder
 app.set("views",path.join(__dirname,"views"));
 // Set view engine as ejs
-app.set("view-engine","ejs");
+app.set("view engine", "ejs");
+
+// get routers 
+const indexRouter = require("./routers/indexRouter");
+const clientsRouter = require("./routers/clientsRouter");
+const productsRouter = require("./routers/productsRouter");
+const invoicesRouter = require("./routers/invoicesRouter");
+
+// Use the routers
+app.use("/",indexRouter);
 
 // start listening
-app.listen(PORT, () => console.log(`Example app listening on port ${PORT}!`));
+app.listen(PORT, () => console.log(`App listening on port ${PORT}!`));
