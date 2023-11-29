@@ -1,0 +1,8 @@
+<div id="client-list">
+    <a href="/clients/edit">Create New</a>
+    <ul>
+        <% clients.forEach((client) => { %>
+            <li><a href="/clients/<%= client.id %>"><%= client.name %></a></li>
+        <% }); %>
+    </ul>
+</div>

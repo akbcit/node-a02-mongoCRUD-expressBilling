@@ -11,7 +11,11 @@ const clientSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
-    companyName: String,
+    company:{
+      type:String,
+      required:true,
+    },
+    // company: String,
     email: {
       type: String,
       required: true,

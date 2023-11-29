@@ -2,7 +2,7 @@ const express = require("express");
 
 // create a router
 const indexRouter = express.Router();
-// Import package and get contributors
+// Import packageReader and get contributors
 const packageReader = require('../packageReader');
 const contributors = packageReader.getContributors();
 

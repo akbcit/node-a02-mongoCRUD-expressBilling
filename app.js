@@ -57,6 +57,7 @@ const invoicesRouter = require("./routers/invoicesRouter");
 // Use the routers
 app.use("/", indexRouter);
 app.use("/products", productsRouter);
+app.use("/clients", clientsRouter);
 
 // start listening
 app.listen(PORT, () => console.log(`App listening on port ${PORT}!`));
