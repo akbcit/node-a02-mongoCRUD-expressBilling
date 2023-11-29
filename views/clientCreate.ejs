@@ -1,0 +1,44 @@
+<form id="client-create" action="/clients/edit" method="post">
+    <div>
+      <label for="client-name">Name:</label>
+      <input
+        type="text"
+        id="client-name"
+        name="clientName"
+        required
+        value="<%= newClient.name !== undefined ? newClient.name : '' %>"
+      />
+    </div>
+    <div>
+      <label for="client-code">Short Code:</label>
+      <input
+        type="text"
+        id="client-code"
+        name="clientCode"
+        required
+        value="<%= newClient.code !== undefined ? newClient.code : '' %>"
+      />
+    </div>
+    <div>
+      <label for="client-company">Company (if any):</label>
+      <input
+        type="text"
+        id="client-company"
+        name="clientCompany"
+        value="<%= newClient.company !== undefined ? newClient.company : '' %>"
+      />
+    </div>
+    <div>
+      <label for="client-email">Email:</label>
+      <input
+        type="email"
+        id="client-email"
+        name="clientEmail"
+        value="<%= newClient.email !== undefined ? newClient.email : '' %>"
+      />
+    </div>
+    <button type="submit" id="client-form-btn">Submit</button>
+  </form>
+  <% if (message) { %>
+    <p><%= message %></p>
+  <% } %>
