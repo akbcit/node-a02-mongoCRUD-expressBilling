@@ -8,8 +8,8 @@ class ProductRepo {
     return products;
   }
 
-  async getProductById(id) {
-    let product = await Product.find(id);
+  async getProductById(productId) {
+    let product = await Product.findById(productId);
     return product;
   }
 }

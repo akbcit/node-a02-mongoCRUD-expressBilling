@@ -25,7 +25,7 @@ exports.Detail = async function (request, response) {
   let product = await _productRepo.getProductById(productId);
   let products = await _productRepo.getAllProducts();
   if (product) {
-    response.render("prodcut", {
+    response.render("product", {
       title: "Express Billing - " + product.name,
       products: products,
       productId: request.params.id,
