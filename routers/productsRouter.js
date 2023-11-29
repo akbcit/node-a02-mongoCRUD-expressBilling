@@ -1,9 +1,14 @@
 const express = require("express");
+const ProductController = require("../controllers/ProductController");
 
 // create a router
 const productsRouter = express.Router();
 
-// Rest of the code to follow...
+// show all products
+productsRouter.get("/", ProductController.Index);
+
+// show individual product details
+productsRouter.get("/:id", ProductController.Detail);
 
 // Export the router
 module.exports = productsRouter;
