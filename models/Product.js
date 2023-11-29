@@ -2,7 +2,7 @@
 
 const mongoose = require("mongoose");
 
-const clientSchema = mongoose.Schema(
+const productSchema = mongoose.Schema(
   {
     name: {
       type: String,
@@ -17,8 +17,10 @@ const clientSchema = mongoose.Schema(
       required: true,
     },
   },
-  { collection: "profiles" }
+  { collection: "products" }
 );
+
+const Product = mongoose.model("Product", productSchema);
 
 // export the model
 module.exports = Product;

@@ -1,0 +1,17 @@
+<h1>Products</h1>
+
+<div>
+  <a href=""><button>Add a new Product</button></a>
+</div>
+<div>
+  <ul>
+    <% for (let i = 0; i < products.length; i++ ) {%>
+    <li>
+      <a href="/products/<%= products[i].id %>"><%= products[i].name %></a> |
+      <a href="/products/<%= products[i].id %>/delete"
+        ><button>Delete</button></a
+      >
+    </li>
+    <% } %>
+  </ul>
+</div>

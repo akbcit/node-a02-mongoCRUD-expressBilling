@@ -1,5 +1,5 @@
 // import express
-const express =  require("express");
+const express = require("express");
 const cors = require("cors");
 const expressLayouts = require("express-ejs-layouts");
 const logger = require("morgan");
@@ -39,24 +39,25 @@ app.use(bodyParser.json());
 // use express.static middleware to make the public folder accessible
 app.use(express.static("public"));
 
-// Set EJS up 
+// Set EJS up
 app.use(expressLayouts);
-app.set("layout","./layouts/full-width")
+app.set("layout", "./layouts/full-width");
 
 // Set default views folder
-app.set("views",path.join(__dirname,"views"));
+app.set("views", path.join(__dirname, "views"));
 // Set view engine as ejs
 app.set("view engine", "ejs");
 
-// get routers 
+// get routers
 const indexRouter = require("./routers/indexRouter");
 const clientsRouter = require("./routers/clientsRouter");
 const productsRouter = require("./routers/productsRouter");
 const invoicesRouter = require("./routers/invoicesRouter");
 
 // Use the routers
-app.use("/",indexRouter);
-app.use("/clients",clientsRouter);
+app.use("/", indexRouter);
+app.use("/products", productsRouter);
+app.use("/clients", clientsRouter);
 
 // start listening
 app.listen(PORT, () => console.log(`App listening on port ${PORT}!`));
