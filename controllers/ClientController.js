@@ -11,15 +11,26 @@ const _clientRepo = new ClientRepo();
 
 // Get method for Clients Home
 exports.ClientsIndex = async (req, res) => {
-  console.log("fetching data from controller");
-  // get clients from repo
-  const clients = await _clientRepo.getAllClients();
+  // create a variable for clients
+  let clients;
+  // check for any query parameters
+  const { searchedName } = req.query;
+  // if there is a query parameter
+  if (searchedName) {
+    console.log("fetching data for search term from controller");
+    // get results for this search param from repo
+    clients = await _clientRepo.getClientsbyName(searchedName);
+  } else {
+    console.log("fetching all clients data from controller");
+    // get all clients from repo
+    clients = await _clientRepo.getAllClients();
+  }
   // render the Clients Index page
   res.status(200).render("clientsIndex", {
     title: "Express Billing Clients Home",
     contributors: contributors,
     clients: clients ? clients : [],
-    message: "",
+    message: "No clients found!",
   });
 };
 
