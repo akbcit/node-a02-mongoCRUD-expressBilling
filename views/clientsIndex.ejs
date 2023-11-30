@@ -1,8 +1,14 @@
 <div id="client-list">
     <a href="/clients/edit">Create New</a>
-    <ul>
-        <% clients.forEach((client) => { %>
-            <li><a href="/clients/<%= client.id %>"><%= client.name %></a></li>
-        <% }); %>
-    </ul>
+    <table>
+        <tbody>
+            <% clients.forEach((client) => { %>
+                <tr>
+                    <td><a href="/clients/<%= client.id %>"><%= client.name %></a></td>
+                    <td><a href="/clients/<%= client.id %>/delete">Delete</a></td>
+                </tr>
+            <% }); %>
+        </tbody>
+    </table>
 </div>
+<%= message %>
