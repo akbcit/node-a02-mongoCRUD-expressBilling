@@ -16,7 +16,26 @@ class ClientRepo {
       const clients = await Client.find({}).sort({ name: 1 });
       return clients;
     } catch (error) {
-      return [];
+      return false;
+    }
+  }
+
+  // Method for getting clients having some string in name
+  async getClientsbyName(searchedName) {
+    console.log(
+      `finding search term ${searchedName} for name field in database`
+    );
+    try {
+      // so, we will search a regex; $options indicates that search is case insensitive 
+      const clients = await Client.find({
+        name: { $regex: searchedName, $options: "i" },
+      }).exec();
+      console.log(`search successful!`);
+      console.log(clients);
+      return clients;
+    } catch (error) {
+      console.error("error resolving search", error.message);
+      return false;
     }
   }
 
@@ -85,14 +104,13 @@ class ClientRepo {
 
   // method for deleting a client
   async deleteClient(id) {
-    try{
+    try {
       console.log(`deleting client ${id}`);
       const deletedClient = await Client.findByIdAndDelete(id);
       console.log(`deleted client ${id}!`);
       return `Client ${deletedClient.name} deleted successfully!`;
-    }
-    catch(error){
-      console.error("Error while deleting:",error.message);
+    } catch (error) {
+      console.error("Error while deleting:", error.message);
       return false;
     }
   }
