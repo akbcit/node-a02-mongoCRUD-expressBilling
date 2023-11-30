@@ -1,4 +1,4 @@
-<form id="client-create" action="/clients/edit" method="post">
+<form id="client-create" action="<%=title.includes("Update") ? `/clients/${customer.id}/edit` : "/clients/edit"%>" method="post">
     <div>
       <label for="client-name">Name:</label>
       <input
@@ -6,7 +6,7 @@
         id="client-name"
         name="clientName"
         required
-        value="<%= newClient.name !== undefined ? newClient.name : '' %>"
+        value="<%= customer.name !== undefined ? customer.name : '' %>"
       />
     </div>
     <div>
@@ -16,7 +16,7 @@
         id="client-code"
         name="clientCode"
         required
-        value="<%= newClient.code !== undefined ? newClient.code : '' %>"
+        value="<%= customer.code !== undefined ? customer.code : '' %>"
       />
     </div>
     <div>
@@ -25,7 +25,7 @@
         type="text"
         id="client-company"
         name="clientCompany"
-        value="<%= newClient.company !== undefined ? newClient.company : '' %>"
+        value="<%= customer.company !== undefined ? customer.company : '' %>"
       />
     </div>
     <div>
@@ -34,10 +34,10 @@
         type="email"
         id="client-email"
         name="clientEmail"
-        value="<%= newClient.email !== undefined ? newClient.email : '' %>"
+        value="<%= customer.email !== undefined ? customer.email : '' %>"
       />
     </div>
-    <button type="submit" id="client-form-btn">Submit</button>
+    <button type="submit" value="Submit"><%= title.includes("Update") ? "Update" : "Create" %></button>
   </form>
   <% if (message) { %>
     <p><%= message %></p>
