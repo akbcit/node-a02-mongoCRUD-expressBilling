@@ -1,5 +1,11 @@
 <h1>Products</h1>
-
+<div id="search-bar">
+  <form action="/products" method="get">
+      <label for="search-name">Name:</label>
+      <input type="input" id="search-name" name="searchedName"/>
+      <button type="submit">Search</button>
+  </form>
+</div>
 <div>
   <a href="/products/create"><button>Add a new Product</button></a>
 </div>

@@ -5,8 +5,10 @@ class ProductRepo {
 
   async getAllProducts() {
     let products = await Product.find({});
+    products.sort((a, b) => a.name.localeCompare(b.name));
     return products;
   }
+  
 
   async getProductById(productId) {
     let product = await Product.findById(productId);
@@ -39,6 +41,24 @@ class ProductRepo {
     }
   }
 
+  // Method for getting products having some string in name
+  async getProductsbyName(searchedName) {
+    console.log(
+      `finding search term ${searchedName} for name field in database`
+    );
+    try {
+      // so, we will search a regex; $options indicates that search is case insensitive 
+      const products = await Product.find({
+        name: { $regex: searchedName, $options: "i" },
+      }).exec();
+      console.log(`search successful!`);
+      console.log(products);
+      return products;
+    } catch (error) {
+      console.error("error resolving search", error.message);
+      return false;
+    }
+  }
   async deleteProductById(id) {
     console.log(`deleting product by id ${id}`);
     let result = await Product.findByIdAndDelete(id);
