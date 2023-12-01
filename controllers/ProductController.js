@@ -14,7 +14,7 @@ exports.Index = async function (request, response) {
     response.render("productsIndex", {
       title: "Express Billing - Products",
       products: products,
-      contributors: ["Aditya", "Alex", "Nigel", "Tracy"],
+      contributors: contributors,
     });
   } else {
     response.render("productsIndex", {
@@ -34,7 +34,7 @@ exports.Detail = async function (request, response) {
       products: products,
       productId: request.params.id,
       layout: "./layouts/full-width",
-      contributors: ["Aditya", "Alex", "Nigel", "Tracy"],
+      contributors: contributors,
     });
   } else {
     response.render("productsIndex", {
@@ -77,6 +77,24 @@ exports.CreateProduct = async function (request, response) {
       product: responseObj.obj,
       contributors: contributors,
       errorMessage: responseObj.errorMsg,
+    });
+  }
+};
+
+// Handle profile form GET request
+exports.DeleteProductById = async function (request, response) {
+  const productId = request.params.id;
+  let deletedProduct = await _productRepo.deleteProductById(productId);
+  let products = await _productRepo.getAllProducts();
+
+  if (deletedProduct) {
+    response.redirect("/products");
+  } else {
+    response.render("productsIndex", {
+      title: "Express Billing - Products",
+      products: products,
+      errorMessage: "Error.  Unable to Delete",
+      contributors: contributors,
     });
   }
 };
