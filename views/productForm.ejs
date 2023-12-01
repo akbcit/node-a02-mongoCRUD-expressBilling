@@ -1,0 +1,19 @@
+<h3><%= product_id ? "Edit" : "New" %> Product</h3>
+
+<form action="/products/edit<%= product_id ? "/"+product_id : "" %>" method="POST">   
+    <input type="hidden" id="product_id" name="product_id" value="<%= product_id %>">
+    <div>
+        <label for="name">Name:</label>
+        <input id="name" name="name" type="text" required value="<%= product.name ? product.name : '' %>">
+    </div>
+    <div>
+        <label for="code">Code:</label>
+        <input id="code" name="code" type="text" required value="<%= product.code ? product.code : '' %>">
+    </div>
+    <div>
+        <label for="unitCost">Unit Cost:</label>
+        <input id="unitCost" name="unitCost" type="text" required value="<%= product.unitCost ? product.unitCost : '' %>">
+    </div>
+      <button type="submit" value="Submit">Submit</button>
+</form>
+<%= errorMessage %>

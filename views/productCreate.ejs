@@ -1,18 +1,21 @@
 <h3>New Product</h3>
 
 <form action="/products/create" method="POST">
-  <label for="name">Name:</label>
-  <input id="name" name="name" type="text" value=<%= product.name ? product.name
-  : '' %> >
-
-  <label for="name">Code:</label>
-  <input id="code" name="code" type="text" value=<%= product.code ? product.code
-  : '' %> >
-
-  <label for="unitCost">Unit Cost:</label>
-  <input id="unitCost" name="unitCost" type="text" value=<%= product.unitCost ?
-  product.unitCost : '' %> >
-
+  <div>
+    <label for="name">Name:</label>
+    <input id="name" name="name" type="text" required value=<%= product.name ?
+    product.name : '' %> >
+  </div>
+  <div>
+    <label for="code">Code:</label>
+    <input id="code" name="code" type="text" required value=<%= product.code ?
+    product.code : '' %> >
+  </div>
+  <div>
+    <label for="unitCost">Unit Cost:</label>
+    <input id="unitCost" name="unitCost" type="text" required value=<%=
+    product.unitCost ? product.unitCost : '' %> >
+  </div>
   <button type="submit" value="Submit">Submit</button>
 </form>
 <%= errorMessage %>
