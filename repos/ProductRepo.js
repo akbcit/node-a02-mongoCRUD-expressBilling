@@ -38,6 +38,13 @@ class ProductRepo {
       return response;
     }
   }
+
+  async deleteProductById(id) {
+    console.log(`deleting product by id ${id}`);
+    let result = await Product.findByIdAndDelete(id);
+    console.log(result);
+    return result;
+  }
 }
 
 module.exports = ProductRepo;

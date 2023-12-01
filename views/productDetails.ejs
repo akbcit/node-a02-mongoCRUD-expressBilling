@@ -1,2 +1,8 @@
-<% for (let i = 0; i < products.length; i++) { %> <% if(products[i].id ===
-productId) { %> <%= products[i].name %> <% } %> <% } %>
+<% for (let i=0; i < products.length; i++) { %> <% if
+(products[i].id===productId) { %>
+<h2>Detail for Product <%= products[i].name %></h2>
+<div>Product ID: <%= products[i].id %></div>
+<div>Product Name: <%= products[i].name %></div>
+<div>Code: <%= products[i].code %></div>
+<div>Unit Cost: <%= products[i].unitCost %></div>
+<% } %> <% } %>

@@ -13,12 +13,14 @@ const dataPath = path.join(__dirname, "../repos/");
 // show all products
 productsRouter.get("/", ProductController.Index);
 
-// create before detail
+// create before detail route
 productsRouter.get("/create", ProductController.Create);
 productsRouter.post("/create", ProductController.CreateProduct);
 
 // show individual product details
 productsRouter.get("/:id", ProductController.Detail);
+
+productsRouter.get("/:id/delete", ProductController.DeleteProductById);
 
 // Export the router
 module.exports = productsRouter;
