@@ -10,6 +10,18 @@ const contributors = packageReader.getContributors();
 
 exports.Index = async function (request, response) {
   let products = await _productRepo.getAllProducts();
+  // check for any query parameters
+  const { searchedName } = request.query;
+  // if there is a query parameter
+  if (searchedName) {
+    console.log("fetching data for search term from controller");
+    // get results for this search param from repo
+    products = await _productRepo.getProductsbyName(searchedName);
+  } else {
+    console.log("fetching all clients data from controller");
+    // get all clients from repo
+    products = await _productRepo.getAllProducts();
+  }
   if (products) {
     response.render("productsIndex", {
       title: "Express Billing - Products",
