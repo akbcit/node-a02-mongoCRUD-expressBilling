@@ -1,18 +1,18 @@
-<h3><%= product_id ? "Edit" : "New" %> Product</h3>
+<h3><%= productId ? "Edit" : "New" %> Product</h3>
 
-<form action="/products/edit<%= product_id ? "/"+product_id : "" %>" method="POST">   
-    <input type="hidden" id="product_id" name="product_id" value="<%= product_id %>">
+<form action="/products<%= productId ? "/"+productId : "" %>/edit" method="POST">   
+    <input type="hidden" id="productId" name="productId" value="<%= productId %>">
     <div>
         <label for="name">Name:</label>
-        <input id="name" name="name" type="text" required value="<%= product.name ? product.name : '' %>">
+        <input id="name" name="name" type="text" required value="<%= products.name ? products.name : '' %>">
     </div>
     <div>
         <label for="code">Code:</label>
-        <input id="code" name="code" type="text" required value="<%= product.code ? product.code : '' %>">
+        <input id="code" name="code" type="text" required value="<%= products.code ? products.code : '' %>">
     </div>
     <div>
         <label for="unitCost">Unit Cost:</label>
-        <input id="unitCost" name="unitCost" type="text" required value="<%= product.unitCost ? product.unitCost : '' %>">
+        <input id="unitCost" name="unitCost" type="text" required value="<%= products.unitCost ? products.unitCost : '' %>">
     </div>
       <button type="submit" value="Submit">Submit</button>
 </form>
