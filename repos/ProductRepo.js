@@ -45,6 +45,23 @@ class ProductRepo {
     console.log(result);
     return result;
   }
+
+  async updateProductById(id,productObj) {
+    console.log(`updating profile by id ${id}`);
+    const product = await Product.findById(id);
+    console.log("original profile: ", product);
+    product.name = productObj.name;
+    product.code = productObj.code;
+    product.unitCost = productObj.unitCost;
+    let result = await product.save();
+    console.log("updated profile: ", result);
+    return {
+      obj: result,
+      errorMsg: "",
+    };
+  }
 }
+
+
 
 module.exports = ProductRepo;

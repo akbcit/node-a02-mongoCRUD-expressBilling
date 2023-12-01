@@ -22,5 +22,10 @@ productsRouter.get("/:id", ProductController.Detail);
 
 productsRouter.get("/:id/delete", ProductController.DeleteProductById);
 
+// Show Create Profile Form
+productsRouter.get("/:id/edit/", ProductController.Edit);
+// Handle Create Profile Form Submission
+productsRouter.post("/:productId/edit/", ProductController.EditProduct);
+
 // Export the router
 module.exports = productsRouter;
