@@ -1,11 +1,33 @@
-<% for (let i=0; i < products.length; i++) { %> <% if
-(products[i].id===productId) { %>
-<h2>Detail for Product <%= products[i].name %></h2>
-<div>Product ID: <%= products[i].id %></div>
-<div>Product Name: <%= products[i].name %></div>
-<div>Code: <%= products[i].code %></div>
-<div>Unit Cost: <%= products[i].unitCost %></div>
 <div>
-    <p><a href="<%= products[i].id %>/edit">Update</a></p>
+  <table class="table">
+    <tbody>
+      <% for (let i=0; i < products.length; i++) { %> <% if
+      (products[i].id===productId) { %>
+      <thead>
+        <tr>
+          <h2>Detail for Product: <%= products[i].name %></h2>
+        </tr>
+      </thead>
+      <tr>
+        <th scope="row">Product ID:</th>
+        <td><%= products[i].id %></td>
+      </tr>
+      <tr>
+        <th scope="row">Product Name:</th>
+        <td><%= products[i].name %></td>
+      </tr>
+      <tr>
+        <th scope="row">Code:</th>
+        <td><%= products[i].code %></td>
+      </tr>
+      <tr>
+        <th scope="row">Unit Cost:</th>
+        <td><%= products[i].unitCost %></td>
+      </tr>
+    </tbody>
+  </table>
+  <a href="<%= products[i].id %>/edit"
+    ><button class="btn btn-outline-info btn-sml">Update Product</button></a
+  >
+  <% } %> <% } %>
 </div>
-<% } %> <% } %>

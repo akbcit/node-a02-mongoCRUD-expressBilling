@@ -1,5 +1,4 @@
 <h3><%= productId ? "Edit" : "New" %> Product</h3>
-
 <form action="/products<%= productId ? "/"+productId : "" %>/edit" method="POST">   
     <input type="hidden" id="productId" name="productId" value="<%= productId %>">
     <div>

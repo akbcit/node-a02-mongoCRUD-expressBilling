@@ -1,23 +1,23 @@
-<h1>Products</h1>
-<div id="search-bar">
-  <form action="/products" method="get">
+<div class="d-flex flex-column align-items-center">
+  <h1>Products</h1>
+  <div id="search-bar">
+    <form action="/products" method="get">
       <label for="search-name">Name:</label>
-      <input type="input" id="search-name" name="searchedName"/>
+      <input type="input" id="search-name" name="searchedName" />
       <button type="submit">Search</button>
-  </form>
-</div>
-<div>
-  <a href="/products/create"><button>Add a new Product</button></a>
-</div>
-<div>
-  <ul>
-    <% for (let i = 0; i < products.length; i++ ) {%>
-    <li>
-      <a href="/products/<%= products[i].id %>"><%= products[i].name %></a> |
-      <a href="/products/<%= products[i].id %>/delete"
-        ><button>Delete</button></a
-      >
-    </li>
-    <% } %>
-  </ul>
+    </form>
+  </div>
+    <a href="/products/create"
+      ><button class="btn btn-primary btn-sm" id="add-product-btn">Add a new Product</button></a
+    >
+  <table class="table">
+    <tbody>
+      <% for (let i = 0; i < products.length; i++ ) {%>
+          <tr>
+            <td><a class="link-offset-2 link-offset-3-hover link-underline link-underline-opacity-0 link-underline-opacity-75-hover" href="/products/<%= products[i].id %>"><%= products[i].name %></a></td>
+            <td class="text-end"><a class="link-offset-2 link-offset-3-hover link-underline link-underline-opacity-0 link-underline-opacity-75-hover" href="/products/<%= products[i].id %>/delete"><button type="button" class="btn btn-danger btn-sm">Delete</button></a</td>
+          </tr>
+      <% } %>
+    </tbody>
+  </table>
 </div>
