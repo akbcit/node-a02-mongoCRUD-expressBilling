@@ -60,7 +60,7 @@ class ClientRepo {
       // if error quit and send error as response
       if (error) {
         console.error("error while validating", error);
-        return error.message;
+        return "Error, please try again!";
       }
       // else save document
       console.log("saving client record");
@@ -70,7 +70,7 @@ class ClientRepo {
     } catch (error) {
       // display error and return with error message
       console.error("error creating client:", error);
-      return error.message;
+      return "Could not create/update client due to error, Please try again!";
     }
   }
 
