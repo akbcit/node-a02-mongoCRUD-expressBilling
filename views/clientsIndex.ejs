@@ -1,22 +1,33 @@
-<div id="search-bar">
-    <form action="/clients" method="get">
-        <label for="search-name">Name:</label>
-        <input type="input" id="search-name" name="searchedName"/>
-        <button type="submit">Search</button>
-    </form>
-</div>
+<div class="d-flex flex-column align-items-center">
+    <h3>Clients</h3>
 
-<div id="client-list">
-    <a href="/clients/edit">Create New</a>
-    <table>
-        <tbody>
-            <% clients.forEach((client) => { %>
-                <tr>
-                    <td><a href="/clients/<%= client.id %>"><%= client.name %></a></td>
-                    <td><a href="/clients/<%= client.id %>/delete">Delete</a></td>
-                </tr>
-            <% }); %>
-        </tbody>
-    </table>
+    <div id="search-bar">
+        <form action="/clients" method="get" class="w-100 mb-3">
+            <div class="input-group">
+                <input type="text" id="search-name" name="searchedName" placeholder="Enter client's name" class="form-control me-2"/>
+                <div class="input-group-append">
+                    <button type="submit" class="btn btn-outline-secondary">Search</button>
+                </div>
+            </div>
+        </form>
+    </div>
+  
+    <div id="client-list" class="w-100 d-flex justify-content-center align-items-center flex-column">
+        <div>
+            <a href="/clients/edit" class="btn btn-primary btn-sm" id="add-product-btn">Add a new Client</a>
+        </div>
+        <table class="table">
+            <tbody>
+                <% clients.forEach((client) => { %>
+                    <tr>
+                        <td><a href="/clients/<%= client.id %>" class="text-decoration-none"><%= client.name %></a></td>
+                        <td class="text-end">
+                            <a href="/clients/<%= client.id %>/delete" class="btn btn-danger btn-sm">Delete</a>
+                        </td>
+                    </tr>
+                <% }); %>
+            </tbody>
+        </table>
+    </div>
+    <%= message %>
 </div>
-<%= message %>
