@@ -1,44 +1,50 @@
-<form id="client-create" action="<%=title.includes("Update") ? `/clients/${customer.id}/edit` : "/clients/edit"%>" method="post">
-    <div>
-      <label for="client-name">Name:</label>
-      <input
-        type="text"
-        id="client-name"
-        name="clientName"
-        required
-        value="<%= customer.name !== undefined ? customer.name : '' %>"
-      />
-    </div>
-    <div>
-      <label for="client-code">Short Code:</label>
-      <input
-        type="text"
-        id="client-code"
-        name="clientCode"
-        required
-        value="<%= customer.code !== undefined ? customer.code : '' %>"
-      />
-    </div>
-    <div>
-      <label for="client-company">Company (if any):</label>
-      <input
-        type="text"
-        id="client-company"
-        name="clientCompany"
-        value="<%= customer.company !== undefined ? customer.company : '' %>"
-      />
-    </div>
-    <div>
-      <label for="client-email">Email:</label>
-      <input
-        type="email"
-        id="client-email"
-        name="clientEmail"
-        value="<%= customer.email !== undefined ? customer.email : '' %>"
-      />
-    </div>
-    <button type="submit" value="Submit"><%= title.includes("Update") ? "Update" : "Create" %></button>
-  </form>
-  <% if (message) { %>
-    <p><%= message %></p>
-  <% } %>
+<form id="client-create" action="<%= title.includes("Update") ? `/clients/${customer.id}/edit` : "/clients/edit" %>" method="post">
+  <div class="form-group">
+    <label for="client-name">Name:</label>
+    <input
+      class="form-control"
+      type="text"
+      id="client-name"
+      name="clientName"
+      required
+      value="<%= customer.name !== undefined ? customer.name : '' %>"
+    />
+  </div>
+  <div class="form-group">
+    <label for="client-code">Short Code:</label>
+    <input
+      class="form-control"
+      type="text"
+      id="client-code"
+      name="clientCode"
+      required
+      value="<%= customer.code !== undefined ? customer.code : '' %>"
+    />
+  </div>
+  <div class="form-group">
+    <label for="client-company">Company (if any):</label>
+    <input
+      class="form-control"
+      type="text"
+      id="client-company"
+      name="clientCompany"
+      value="<%= customer.company !== undefined ? customer.company : '' %>"
+    />
+  </div>
+  <div class="form-group">
+    <label for="client-email">Email:</label>
+    <input
+      class="form-control"
+      type="email"
+      id="client-email"
+      name="clientEmail"
+      value="<%= customer.email !== undefined ? customer.email : '' %>"
+    />
+  </div>
+  <button class="btn btn-primary" type="submit" value="Submit">
+    <%= title.includes("Update") ? "Update" : "Create" %>
+  </button>
+</form>
+<% if (message) { %>
+  <p><%= message %></p>
+<% } %>
