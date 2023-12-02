@@ -5,7 +5,7 @@
       (products[i].id===productId) { %>
       <thead>
         <tr>
-          <h2>Detail for Product: <%= products[i].name %></h2>
+          <h3>Detail for Product: <%= products[i].name %></h3>
         </tr>
       </thead>
       <tr>
@@ -22,7 +22,7 @@
       </tr>
       <tr>
         <th scope="row">Unit Cost:</th>
-        <td><%= products[i].unitCost %></td>
+        <td>$<%= products[i].unitCost %></td>
       </tr>
     </tbody>
   </table>
