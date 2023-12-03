@@ -13,9 +13,9 @@ const{ClientsIndex,CreateClientForm,AddClient,ClientDetails,UpdateClientForm,Upd
 // Get route for Clients Index
 clientsRouter.get("/",ClientsIndex);
 // Get route for displaying client create form
-clientsRouter.get("/edit",CreateClientForm);
+clientsRouter.get("/create",CreateClientForm);
 // Post route for using data from form to create a new document / record
-clientsRouter.post("/edit",AddClient);
+clientsRouter.post("/create",AddClient);
 // Get route for getting a particular client's details
 clientsRouter.get("/:clientId",ClientDetails);
 // Get route for updating a client's details
