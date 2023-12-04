@@ -30,7 +30,7 @@ exports.ClientsIndex = async (req, res) => {
     title: "Express Billing Clients Home",
     contributors: contributors,
     clients: clients ? clients : [],
-    message: clients ? "" : "No clients found!",
+    message: clients.length>0 ? "" : "No clients found!",
   });
 };
 

@@ -24,3 +24,29 @@ body {
 #site-footer {
   margin-top: auto;
 }
+
+.container{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+main{
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+}
+
+#error-section{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+#error-icon{
+  height: 10rem;
+  width: 8rem;
+}
+
