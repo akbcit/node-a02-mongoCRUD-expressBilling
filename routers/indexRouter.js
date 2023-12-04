@@ -8,7 +8,7 @@ const contributors = packageReader.getContributors();
 
 // define base route
 indexRouter.get("/",(req,res)=>{
-    res.status(200).render("home",{title:"Express Billing - Home Page",contributors});
+    res.status(200).render("home",{title:"Express Billing - Page Not Found",contributors});
 });
 
 // Rest of the code to follow...

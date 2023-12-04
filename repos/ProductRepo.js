@@ -1,18 +1,23 @@
 const Product = require("../models/Product.js");
 
 class ProductRepo {
-  ProductRepo() {}
+  ProductRepo() { }
 
   async getAllProducts() {
     let products = await Product.find({});
     products.sort((a, b) => a.name.localeCompare(b.name));
     return products;
   }
-  
+
 
   async getProductById(productId) {
-    let product = await Product.findById(productId);
-    return product;
+    try {
+      let product = await Product.findById(productId);
+      return product;
+    }
+    catch(error){
+      return false;
+    }
   }
 
   async createProduct(productObj) {
@@ -66,7 +71,7 @@ class ProductRepo {
     return result;
   }
 
-  async updateProductById(id,productObj) {
+  async updateProductById(id, productObj) {
     console.log(`updating profile by id ${id}`);
     const product = await Product.findById(id);
     console.log("original profile: ", product);
