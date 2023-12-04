@@ -100,7 +100,7 @@ exports.ClientDetails = async function (req, res) {
   }
   // if not then send a null client prop
   else {
-    console.log(`client${clientId}'s record not found!`);
+    console.log(`client ${clientId}'s record not found!`);
     // render client details page and send this client doc object
     res.render("404", {
       title: `Express Billing Page Not Found`,

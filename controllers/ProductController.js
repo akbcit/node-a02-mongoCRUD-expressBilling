@@ -32,6 +32,7 @@ exports.Index = async function (request, response) {
     response.render("productsIndex", {
       title: "Express Billing - Products",
       products: [],
+      contributors: contributors,
     });
   }
 };
@@ -49,9 +50,11 @@ exports.Detail = async function (request, response) {
       contributors: contributors,
     });
   } else {
-    response.render("productsIndex", {
-      title: "Express Billing - Products",
-      products: [],
+    console.log(`product ${request.params.id}'s record not found!`);
+    // render client details page and send this client doc object
+    response.render("404", {
+      title: `Express Billing Page Not Found`,
+      contributors: contributors,
     });
   }
 };
@@ -76,7 +79,6 @@ exports.CreateProduct = async function (request, response) {
     unitCost: request.body.unitCost,
   });
 
-  //
   let responseObj = await _productRepo.createProduct(tempProductObj);
 
   if (responseObj.errorMsg == "") {

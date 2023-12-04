@@ -60,5 +60,13 @@ app.use("/products", productsRouter);
 app.use("/clients", clientsRouter);
 app.use("/invoices", invoicesRouter);
 
+// for any other pages get 404
+const packageReader = require('./packageReader');
+const contributors = packageReader.getContributors();
+app.get("/*",(req,res)=>{
+    // Respond with a 404 error status and render the 404.ejs page
+  res.status(404).render("404",{title:"Express Billing - Page Not Found",contributors});
+});
+
 // start listening
 app.listen(PORT, () => console.log(`App listening on port ${PORT}!`));
